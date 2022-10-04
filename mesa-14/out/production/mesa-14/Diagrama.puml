@@ -1,0 +1,40 @@
+@startuml
+class Sistema {
+    - nombre: String
+    - reservas: ArrayList<Reserva>
+    + adReserva(): void
+    + recaudacionTotal(): double
+    + cantVecesRecorrida(): int
+
+}
+
+class Reserva {
+    - codigoReserva: int
+    - estacionPartida: String
+    - estacionDestino: String
+    - cantPasajeros: int
+    + esViajeCompleto(): boolean
+    + calcularReserva(): double
+}
+
+class Trayecto {
+    - estaciones: LinkedList<String>
+    + addEstaciones(): void
+}
+
+Sistema "1" -down-> "*" Reserva
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@enduml

@@ -1,0 +1,34 @@
+@startuml
+class Almacen {
+    + calcularEspacio(): double
+}
+
+abstract Producto <<Abstract>> {
+    - peso: double
+    + {abstract} calcularEspacio(): double
+}
+
+class Caja {
+    - longitud: double
+    - ancho: double
+    - altura: double
+    + calcularEspacio(): double
+}
+
+class Pelota {
+    - radio: double
+    + calcularEspacio(): double
+}
+
+class ProductoFactory {
+    - instance: ProductoFactory
+    - ProductoFactory()
+    + getinstance(): ProductoFactory
+    + creaProducto(tipo String): Producto
+}
+
+Almacen "1" --> "*" Producto
+Caja -up-|> Producto: Extends
+Pelota -up-|> Producto: Extends
+ProductoFactory .left.> Producto: Use
+@enduml

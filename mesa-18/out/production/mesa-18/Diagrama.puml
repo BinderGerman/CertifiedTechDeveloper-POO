@@ -1,0 +1,36 @@
+@startuml
+interface Figura <<abstract>> {
+    {abstract} calcularArea(): double
+}
+
+class Triangulo {
+    + calcularArea(): double
+}
+
+class Rectangulo {
+    + calcularArea(): double
+}
+
+class Circulo {
+    + calcularArea(): double
+}
+
+class FiguraCompuesta {
+    - nombre: String
+    - figuras: ArrayList
+    + calcularArea(): double
+}
+
+
+Triangulo .up.|> Figura: implements
+Rectangulo .up.|> Figura: implements
+Circulo .up.|> Figura: implements
+FiguraCompuesta .up.|> Figura: implements
+FiguraCompuesta -up-> "*" Figura
+
+
+
+
+
+
+@enduml

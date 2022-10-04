@@ -1,0 +1,36 @@
+@startuml
+class Proyecto {
+    - nombre: String
+    - codigo: int
+    - cantHorasXTrabajador: double
+}
+
+class Tarea {
+    - nombreTarea: String
+    + costoXTarea():
+}
+
+class Trabajador {
+    - legajo: int
+    - nombre: String
+    - apellido: String
+    - salarioFijo: double
+    + calcularSalario(salarioFijo double): double
+}
+
+class TrabajadorEstandar {
+}
+
+class TrabajadorXHora {
+    - cantHorasTrabajadas: int
+    - costoXHora: double
+    + calcularSalario(salarioFijo double, cantHorasTrabajadas double): double
+}
+
+Proyecto "1" -down-> "*" Tarea
+Tarea "1" -down-> "*" Trabajador
+TrabajadorEstandar -up-|> Trabajador
+TrabajadorXHora -up-|> Trabajador
+
+
+@enduml

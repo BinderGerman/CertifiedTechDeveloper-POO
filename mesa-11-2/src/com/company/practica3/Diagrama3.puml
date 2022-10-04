@@ -1,0 +1,38 @@
+@startuml
+class Consulta {
+    - fechaDeConsulta: Date
+    - especialidad: String
+    - hora: int
+    - minuto: int
+    + Consulta(fechaDeConsulta Date, especialidad String, hora int, minuto int): void
+}
+
+abstract Paciente <<abstract>> {
+    - consulta: Consulta
+    - nombre: String
+    - apellido: String
+    - fechaDeNacimiento: Date
+    - esPrimeraConsulta: boolean
+    + hacerEvaluacionInicial(): boolean
+}
+
+class PacienteParticular {
+    - dni: int
+    - precioConsulta: double
+}
+
+class PacienteObraSocial {
+    - nombreObraSocial: String
+    - numAsociado: int
+    + compareTo(Object o): int
+}
+
+interface Comparable <<interface>> {
+    + compareTo(Object o): int
+}
+
+Paciente "1" -up-> "1" Consulta
+PacienteParticular -up-|> Paciente: extends
+PacienteObraSocial -up-|> Paciente: extends
+PacienteObraSocial .up.|> Comparable: implements
+@enduml

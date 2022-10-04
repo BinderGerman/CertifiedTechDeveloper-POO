@@ -1,0 +1,26 @@
+@startuml
+abstract Item <<abstract>> {
+    - nombre: String
+    + {abstract} calcularPrecio(): double
+    + {abstract} mostrar(): String
+}
+
+class Producto {
+    - precio: double
+    + calcularPrecio(): double
+    + mostrar(): String
+}
+
+class Combo {
+    - nombre: String
+    - descuento: double
+    + calcularPrecio(): double
+    + mostrar(): String
+    + agregarItem(i: Item): void
+}
+
+Producto -up-|> Item: Extends
+Combo -up-|> Item: Extends
+Combo -up-> "*" Item
+
+@enduml

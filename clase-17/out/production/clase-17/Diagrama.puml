@@ -1,0 +1,69 @@
+@startuml
+class Reparacion {
+    - estado: Estado
+    - articulo: String
+    - presupuesto: double
+    - direccion: String
+    + darValorPresupuesto(valor: double) void
+    + sumarRespuestos(valor: double) void
+    + cambiarDireccion(direccion String) void
+    + pasarSiguientePaso() void
+}
+
+interface Estado <<Interface>> {
+    + {abstract} darValorPresupuesto(valor: double) void
+    + {abstract} sumarRespuestos(valor: double) void
+    + {abstract} cambiarDireccion(direccion String) void
+    + {abstract} pasarSiguientePaso() void
+}
+
+class EnPresupuesto {
+    - reparacion: Reparacion
+    + darValorPresupuesto(valor: double) void
+    + sumarRepuestos(valor: double) void
+    + cambiarDireccion(direccion String) void
+    + pasarSiguientePaso() void
+}
+
+class EnReparacion {
+    - reparacion: Reparacion
+    + darValorPresupuesto(valor: double) void
+    + sumarRepuestos(valor: double) void
+    + cambiarDireccion(direccion String) void
+    + pasarSiguientePaso() void
+}
+class ParaEnvio {
+    - reparacion: Reparacion
+    + darValorPresupuesto(valor: double) void
+    + sumarRepuestos(valor: double) void
+    + cambiarDireccion(direccion String) void
+    + pasarSiguientePaso() void
+}
+
+class Finalizado {
+    - reparacion: Reparacion
+    + darValorPresupuesto(valor: double)
+    + sumarRepuestos(valor: double)
+    + cambiarDireccion(direccion String)
+    + pasarSiguientePaso()
+}
+
+class EstadoFactory {
+    - instance: EstadoFactory
+    - EstadoFactory()
+    + getInstance(): EstadoFactory
+    + crearEstado(tipo: String, r: Reparacion) Estado
+}
+
+Reparacion -down-> "1" Estado
+EnPresupuesto .up.|> Estado: implements
+EnReparacion .up.|> Estado: implements
+ParaEnvio .up.|> Estado: implements
+Finalizado .up.|> Estado: implements
+EstadoFactory .right.> Estado: use
+EstadoFactory .right.> Reparacion: use
+
+
+
+
+@enduml

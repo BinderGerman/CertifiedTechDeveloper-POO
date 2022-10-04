@@ -1,0 +1,41 @@
+@startuml
+class Alumno {
+    - nombre: String
+    - apellido: String
+    - legajo: int
+    + Alumno(nombre String, apellido String, legajo int): void
+}
+
+abstract Examen {
+    - alumno: Alumno
+    - titulo: String
+    - enunciado: String
+    - nota: double
+    + {abstract} estaAprobado(): boolean
+}
+
+class ExamenParcial {
+    - nroUnidad: int
+    - nroReintentos: int
+    + estaAprobado(): boolean
+    + sePuedeRecuperar(): void
+}
+
+class ExamenFinal {
+    - notaOral: double
+    - descripcion: String
+    + estaAprobado(): boolean
+    + compareTo(Object o): int
+}
+
+class Comparable {
+    + compareTo(Object o): int
+}
+
+Examen "*" -up-> "1" Alumno
+ExamenParcial -up-|> Examen: extends
+ExamenFinal -up-|> Examen: extends
+ExamenFinal .down.|> Comparable: implements
+
+
+@enduml

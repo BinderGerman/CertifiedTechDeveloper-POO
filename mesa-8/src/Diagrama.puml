@@ -1,0 +1,32 @@
+@startuml
+class Cliente {
+    - numeroCliente: int
+    - apellido: String
+    - dni: int
+    - cuit: int
+}
+
+abstract Cuenta <<abstract>> {
+    - saldo: double
+    - cliente: Cliente
+    + depositar(): void
+    + informarSaldo(): void
+    + {abstrac} extraer(monto double): void
+
+}
+
+class CajaDeAhorro {
+    - tasaDeInteres: double
+    + extraer(monto double): void
+
+}
+
+class CuentaCorriente {
+    - descubierto: double
+    + extraer(monto double): void
+}
+
+Cuenta "*" -up-> "1" Cliente
+CajaDeAhorro -up-|> Cuenta
+CuentaCorriente -up-|> Cuenta
+@enduml

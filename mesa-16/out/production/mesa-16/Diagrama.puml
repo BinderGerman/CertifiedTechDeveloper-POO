@@ -1,0 +1,62 @@
+@startuml
+class Producto {
+    - nombre: String
+    - predio: double
+}
+class Carrito {
+    - estado: Estado
+    + agragarProducto(): void
+    + cancelarCarrito(): void
+    + volverPuntoAnterior(): void
+    + pasarSiguienteEstado(): void
+}
+
+interface Estado <<interface>> {
+    + agragarProducto(): void
+    + cancelarCarrito(): void
+    + volverPuntoAnterior(): void
+    + pasarSiguienteEstado(): void
+
+}
+
+class Vacio {
+    - carrito: Carrito
+    + agragarProducto(): void
+    + cancelarCarrito(): void
+    + volverPuntoAnterior(): void
+    + pasarSiguienteEstado(): void
+}
+
+class Cargando {
+    - carrito: Carrito
+    + agragarProducto(): void
+    + cancelarCarrito(): void
+    + volverPuntoAnterior(): void
+    + pasarSiguienteEstado(): void
+}
+
+class Pagando {
+    - carrito: Carrito
+    + agragarProducto(): void
+    + cancelarCarrito(): void
+    + volverPuntoAnterior(): void
+    + pasarSiguienteEstado(): void
+}
+
+class Cerrado {
+    - carrito: Carrito
+    + agragarProducto(): void
+    + cancelarCarrito(): void
+    + volverPuntoAnterior(): void
+    + pasarSiguienteEstado(): void
+}
+
+Carrito -left-> "*" Producto
+Carrito --> "1" Estado
+Vacio .up.> Estado
+Cargando .up.> Estado
+Pagando .up.> Estado
+Cerrado .up.> Estado
+
+
+@enduml

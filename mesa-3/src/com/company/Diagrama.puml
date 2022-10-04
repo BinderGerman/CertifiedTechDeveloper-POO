@@ -1,0 +1,21 @@
+@startuml
+
+
+class Perro {
+ - nombre: String
+ - raza: String
+ - peso: double
+ - anioDeNacimientoAprox: int
+ - tieneChip: boolean
+ - estaLastimado: boolean
+
+
+ + Perro(nombre: String, raza: String, peso: Double, tieneChip: boolean, estaLastimado: boolean)
+ + Perro(nombre: String, raza: String, peso: Double, anioDeNacimientoAprox: Date, tieneChip: boolean, estaLastimado: boolean)
+
+ + calcularEdad(anioDeNacimientoAprox int): int
+ + sePuedePerder(): boolean
+ + sePuedeAdoptar(): boolean
+
+}
+@enduml

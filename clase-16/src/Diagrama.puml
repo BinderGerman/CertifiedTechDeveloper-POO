@@ -1,0 +1,50 @@
+@startuml
+class Tamgochi {
+    - estado: Estado
+    + beber(): void
+    + comer(): void
+    + recibirMimos(): void
+
+}
+
+interface Estado <<Interface>> {
+    + beber(): void
+    + comer(): void
+    + recibirMimos(): void
+}
+
+class Feliz {
+    - tamagochi: Tamagochi
+    + beber(): void
+    + comer(): void
+    + recibirMimos(): void
+}
+
+class Triste {
+    - tamagochi: Tamagochi
+    + beber(): void
+    + comer(): void
+    + recibirMimos(): void
+}
+
+class Hambriento {
+    - tamagochi: Tamagochi
+    + beber(): void
+    + comer(): void
+    + recibirMimos(): void
+}
+
+class Sediento {
+    - tamagochi: Tamagochi
+    + beber(): void
+    + comer(): void
+    + recibirMimos(): void
+}
+
+Tamgochi --> "1" Estado
+Feliz .up.> Estado
+Triste .up.> Estado
+Hambriento .up.> Estado
+Sediento .up.> Estado
+
+@enduml

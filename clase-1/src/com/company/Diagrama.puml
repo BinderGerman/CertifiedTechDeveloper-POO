@@ -1,0 +1,30 @@
+@startuml
+class TarjetaDeDebito {
+ - nombre: String
+ - apellido: String
+ - numero: String
+ - mesVencimiento: int
+ - anioVenciiento: int
+ - saldo: double
+ + tarjetaDeDebito(nombre: String, apellido: String, numero: String)
+ + restarSaldo(valorCompra: double): String
+ + retirarSaldo(monto: int): void
+ + depositarSaldo(monto: int): void
+}
+
+class TarjetaDeCredito {
+    - nombre: String
+ - apellido: String
+ - numero: String
+ - mesVencimiento: int
+ - anioVenciiento: int
+ - saldo: double
+ - limiteFinanciacion: double
+ - maxCuotas: int
+ - cvv: String
+ - saldoImpago: double
+ - saldoConsumido: double
+ + tarjetaDeCredito(nombre: String, apellido: String, numero: String)
+ + comprarEnCuotas(cantCuotas: int, monto: double, interes: double)
+}
+@enduml

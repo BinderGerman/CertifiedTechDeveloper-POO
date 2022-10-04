@@ -1,0 +1,40 @@
+@startuml
+class Instituto {
+    - nombre: String
+    + generarInforme(): void
+    + agregarOferta(oa: OfertaAcademica): void
+}
+
+abstract OfertaAcademica <<abstract>> {
+    - nombre: String
+    - descripcion: String
+    + {abstract} calcularPrecio(): double
+}
+
+
+class ProgramaIntensivo {
+    - porcentajeBonificacion: double
+    + calcularPrecio(): double
+    + agregarOferta(oa: OfertaAcademica): void
+}
+
+class Curso {
+    - cargaHoraria: int
+    - duracion: int
+    - valorHora: double
+    + calcularPrecio(): double
+}
+
+class OfertaAcademicaFactory {
+    - instance: OfertaAcademicaFactory
+    - OfertaAcademicaFactory()
+    + crearOfertaAcademica(tipo: String): OfertaAcademica
+    + {static} getInstance(): OfertaAcademicaFactory
+}
+
+Instituto -right-> "*" OfertaAcademica
+ProgramaIntensivo -up-|> OfertaAcademica: Extends
+Curso -up-|> OfertaAcademica: Extends
+ProgramaIntensivo -up-> OfertaAcademica
+OfertaAcademicaFactory .down.> OfertaAcademica: use
+@enduml

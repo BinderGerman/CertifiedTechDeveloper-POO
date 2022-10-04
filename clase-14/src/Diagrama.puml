@@ -1,0 +1,17 @@
+@startuml
+class Seleccion {
+    - nombre: String
+    + addJugador(jugador: Jugador)
+    + obtenerReserva(): ArrayList<Jugador>
+    + cantJugadores(posicion String): int
+}
+
+class Jugador {
+    - apellido: String
+    - nroCamiseta: int
+    - posicion: String
+    + Jugador(apellido String, nroCamiseta int, posicion String)
+}
+
+Seleccion "1"-down->"*" Jugador
+@enduml
